@@ -27,7 +27,7 @@ function Eimg() {
         <input type="number" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)}/>
         <input type="text" placeholder="Date (yyyy-mm-dd)" value={date} onChange={(e) => setDate(e.target.value)} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
         {/* <input type="range" min="0.025" max="0.2" value={dim} onChange={(e) => setDim(e.target.value)} /> */}
-        <input type="number" placeholder="Dimensions" min="0.025" max="0.2" value={dim} onChange={(e) => setDim(e.target.value)} />
+        <input type="number" placeholder="Dimensions" value={dim} onChange={(e) => setDim(e.target.value)} />
         <button type="Submit">Submit</button>
       </form>
       {imgData && <img src={imgData.url} alt=""/>}
