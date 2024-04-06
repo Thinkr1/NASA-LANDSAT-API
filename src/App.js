@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
 import axios from "axios";
 import config from "./config.js";
 import "./styles.css";
+// import "https://unpkg.com/leaflet@1.6.0/dist/leaflet.css";
+import 'leaflet/dist/leaflet.css'
 
 function Eimg() {
   const [lon, setLon] = useState("");
@@ -26,14 +29,10 @@ function Eimg() {
   return (
     <div className="container">
       <div className="map-container">
-        <MapContainer
-          center={[51.505, -0.09]}
-          zoom={13}
-          style={{ height: "400px" }}
-        >
+        <MapContainer center={[45.4, -75.7]} zoom={12} scrollWheelZoom={true}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
         </MapContainer>
       </div>
