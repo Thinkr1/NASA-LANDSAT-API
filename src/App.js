@@ -17,7 +17,7 @@ function Eimg() {
       const response = await axios.get(
         `https://api.nasa.gov/planetary/earth/assets?lon=${mapCenter[1]}&lat=${mapCenter[0]}&date=${date}&dim=${dim}&api_key=${config.NASA_API_KEY}`
       );
-      console.log(`https://api.nasa.gov/planetary/earth/assets?lon=${mapCenter[1]}&lat=${mapCenter[0]}&date=${date}&dim=${dim}&api_key=${config.NASA_API_KEY}`)
+      // console.log(`https://api.nasa.gov/planetary/earth/assets?lon=${mapCenter[1]}&lat=${mapCenter[0]}&date=${date}&dim=${dim}&api_key=${config.NASA_API_KEY}`)
       setImgData(response.data);
     } catch (err) {
       console.error("Error fetching data: ", err);
