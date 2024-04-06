@@ -23,6 +23,18 @@ function Eimg() {
 
   return (
     <div className="container">
+      <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: "400px" }}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {/* Add Marker if needed */}
+        {/* <Marker position={[51.505, -0.09]}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker> */}
+      </MapContainer>
       <form onSubmit={handleSubmit}>
         <input type="number" placeholder="Longitude" value={lon} onChange={(e) => setLon(e.target.value)}/>
         <input type="number" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)}/>
