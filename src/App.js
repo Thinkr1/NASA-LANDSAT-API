@@ -6,6 +6,8 @@ import "./styles.css";
 import 'leaflet/dist/leaflet.css'
 
 function Eimg() {
+  const [lon, setLon] = useState("");
+  const [lat, setLat] = useState("");
   const [dim, setDim] = useState("");
   const [date, setDate] = useState("");
   const [imgData, setImgData] = useState(null);
@@ -15,9 +17,9 @@ function Eimg() {
     e.preventDefault();
     try {
       const response = await axios.get(
-        `https://api.nasa.gov/planetary/earth/assets?lon=${mapCenter[1]}&lat=${mapCenter[0]}&date=${date}&dim=${dim}&api_key=${config.NASA_API_KEY}`
+        `https://api.nasa.gov/planetary/earth/assets?lon=${lon || mapCenter[1]}&lat=${lat || mapCenter[0]}&date=${date}&dim=${dim}&api_key=${config.NASA_API_KEY}`
       );
-      console.log(`https://api.nasa.gov/planetary/earth/assets?lon=${mapCenter[1]}&lat=${mapCenter[0]}&date=${date}&dim=${dim}`) // Removed API key from console.log for privacy reasons
+      console.log(`https://api.nasa.gov/planetary/earth/assets?lon=${lon || mapCenter[1]}&lat=${lat || mapCenter[0]}&date=${date}&dim=${dim}`)
       setImgData(response.data);
     } catch (err) {
       console.error("Error fetching data: ", err);
@@ -50,6 +52,8 @@ function Eimg() {
         </MapContainer>
       </div>
       <form onSubmit={handleSubmit}>
+        <input type="number" placeholder="Longitude (optional)" value={lon} onChange={(e) => setLon(e.target.value)}/>
+        <input type="number" placeholder="Latitude (optional)" value={lat} onChange={(e) => setLat(e.target.value)}/>
         <input
           type="text"
           placeholder="Date (yyyy-mm-dd)"
