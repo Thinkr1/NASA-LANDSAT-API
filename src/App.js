@@ -72,6 +72,7 @@ function Eimg() {
         </button>
       </form>
       {imgData && <img src={imgData.url} alt="" className="img" />}
+      <footer><small>Created by Pierre-Louis Manchuelle--Lambré</small></footer>
     </div>
   );
 }
