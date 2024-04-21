@@ -41,37 +41,39 @@ function Eimg() {
   };
 
   return (
-    <div className="container">
-      <div className="map-container">
-        <MapContainer center={mapCenter} zoom={12} scrollWheelZoom={true}>
-          <SetMapCenter />
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    <div className="full">
+      <div className="container">
+        <div className="map-container">
+          <MapContainer center={mapCenter} zoom={12} scrollWheelZoom={true}>
+            <SetMapCenter />
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+          </MapContainer>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <input type="number" placeholder="Longitude (optional)" value={lon} onChange={(e) => setLon(e.target.value)}/>
+          <input type="number" placeholder="Latitude (optional)" value={lat} onChange={(e) => setLat(e.target.value)}/>
+          <input
+            type="text"
+            placeholder="Date (yyyy-mm-dd)"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
           />
-        </MapContainer>
+          <input
+            type="number"
+            placeholder="Dimensions (degrees)"
+            value={dim}
+            onChange={(e) => setDim(e.target.value)}
+          />
+          <button className="submit-btn" type="Submit">
+            Submit
+          </button>
+        </form>
+        {imgData && <img src={imgData.url} alt="" className="img" />}
       </div>
-      <form onSubmit={handleSubmit}>
-        <input type="number" placeholder="Longitude (optional)" value={lon} onChange={(e) => setLon(e.target.value)}/>
-        <input type="number" placeholder="Latitude (optional)" value={lat} onChange={(e) => setLat(e.target.value)}/>
-        <input
-          type="text"
-          placeholder="Date (yyyy-mm-dd)"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-        />
-        <input
-          type="number"
-          placeholder="Dimensions (degrees)"
-          value={dim}
-          onChange={(e) => setDim(e.target.value)}
-        />
-        <button className="submit-btn" type="Submit">
-          Submit
-        </button>
-      </form>
-      {imgData && <img src={imgData.url} alt="" className="img" />}
       <footer><small>Created by Pierre-Louis Manchuelle--Lambré</small></footer>
     </div>
   );
